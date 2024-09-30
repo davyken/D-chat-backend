@@ -1,7 +1,11 @@
 import pg from "pg";
 import dotenv from "dotenv";
+import { parse } from "pg-connection-string";
 
 dotenv.config();
+
+const connectionString = process.env.Internal_DB_URL;
+const config = parse(connectionString);
 
 const { Pool } = pg;
 const pool = new Pool({
@@ -15,7 +19,9 @@ const pool = new Pool({
 pool.connect((err) => {
   if (err) {
     console.log(err);
-  } else console.log("Database connected");
+  } else {
+    console.log("Database connected");
+  }
 });
 
 export default pool;
