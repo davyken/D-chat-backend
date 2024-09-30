@@ -72,7 +72,7 @@ const register = async (req, res) => {
     console.log("Sending token...");
     res.status(200).json({ token });
 
-    // client.release();
+    client.release();
 
     console.log("User registered successfully");
     return res.status(200).json({
